@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_pembelian_template_pdf">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="br">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h1>LAPORAN PEMBELIAN</h1>
+                    <div class="row">
+                        <div class="col-4">
+                            Nama        :
+                        </div>
+                        <div class="col-8">
+                            <span t-field="br.name"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Supplier    :
+                        </div>
+                        <div class="col-8">
+                            <span t-field="br.supplier_id"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Tanggal     :
+                        </div>
+                        <div class="col-8">
+                            <span t-field="br.tanggal_pembelian"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table class="table table-striped">
+                            <thead>
+                            <th>Nama Barang</th>
+                            <th>Stok</th>
+                            <th>Harga Beli</th>
+                            <th>Subtotal</th>
+                            </thead>
+                            <t t-foreach="br.detailpembelian_ids" t-as="brs">
+                                <tr>
+                                    <td><span t-esc="brs.bahan_id"/></td>
+                                    <td><span t-esc="brs.qty"/></td>
+                                    <td><span t-esc="brs.harga_modal"/></td>
+                                    <td><span t-esc="brs.subtotal"/></td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+    
+
+</odoo>

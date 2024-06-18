@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+    <!-- hmcoffee.pelanggan tree view -->
+    <record id="hmcoffee_pelanggan_view_tree" model="ir.ui.view">
+        <field name="name">hmcoffee.pelanggan.view.tree</field>
+        <field name="model">hmcoffee.pelanggan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="alamat"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- hmcoffee.pelanggan form view -->
+    <record id="hmcoffee_pelanggan_view_form" model="ir.ui.view">
+        <field name="name">hmcoffee.pelanggan.view.form</field>
+        <field name="model">hmcoffee.pelanggan</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="name"/>
+                        <field name="alamat"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- hmcoffee.pelanggan action window -->
+    <record id="hmcoffee_pelanggan_action" model="ir.actions.act_window">
+        <field name="name">Pelanggan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hmcoffee.pelanggan</field>
+        <field name="view_mode">tree,form</field>
+        
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="hmcoffee_pelanggan_menu_act" 
+        name="Pelanggan" 
+        parent="stakeholder_menu_categ" 
+        action="hmcoffee_pelanggan_action" 
+        sequence="15"/>
+</odoo>
