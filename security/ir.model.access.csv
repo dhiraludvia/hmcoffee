@@ -10,3 +10,5 @@ access_hmcoffee_penjualan,access.hmcoffee.penjualan,model_hmcoffee_penjualan,,1,
 access_hmcoffee_detailpenjualan,access.hmcoffee.detailpenjualan,model_hmcoffee_detailpenjualan,,1,1,1,1
 access_report_hmcoffee_report_bahan_xlsx,access.report.hmcoffee.report_bahan_xlsx,model_report_hmcoffee_report_bahan_xlsx,,1,1,1,1
 access_hmcoffee_reportpenjualanwz,access.hmcoffee.reportpenjualanwz,model_hmcoffee_reportpenjualanwz,,1,1,1,1
+access_hmcoffee_reportpenjualanwzxlsx,access.hmcoffee.reportpenjualanwzxlsx,model_hmcoffee_reportpenjualanwzxlsx,,1,1,1,1
+access_report_hmcoffee_report_penjualan_wizard_xlsx,access.report.hmcoffee.report_penjualan_wizard_xlsx,model_report_hmcoffee_report_penjualan_wizard_xlsx,,1,1,1,1

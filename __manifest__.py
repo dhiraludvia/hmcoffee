@@ -29,6 +29,7 @@
         'views/views.xml',
         'views/templates.xml',
         'wizard/report_penjualanwz.xml',
+        'wizard/report_penjualanwzxlsx.xml',
         'report/report.xml',
         'report/report_penjualan_template_pdf.xml',
         'report/report_penjualan_template_wizard.xml',
