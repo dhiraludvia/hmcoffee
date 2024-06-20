@@ -15,12 +15,12 @@ class Pegawai(models.Model):
     tanggal_lahir = fields.Datetime(string='Tanggal Lahir', default=fields.Datetime.now())
     status = fields.Char(string='Status')
     
-    # @api.onchange('usia')
-    # def _tentukan_status(self):
-    #         if self.usia > 30:
-    #             self.status = 'tua'
-    #         else:
-    #             self.status = 'muda'
+    @api.onchange('usia')
+    def _tentukan_status(self):
+            if self.usia > 30:
+                self.status = 'tua'
+            else:
+                self.status = 'muda'
     
     
 

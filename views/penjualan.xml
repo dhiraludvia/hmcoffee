@@ -6,6 +6,7 @@
         <field name="model">hmcoffee.penjualan</field>
         <field name="arch" type="xml">
             <tree>
+                <button string="Print" name="%(hmcoffee.report_penjualan_pdf)d" type="action" icon="fa-print" class="btn btn-success"/>
                 <field name="name"/>
                 <field name="tanggal_transaksi"/>
                 <field name="total_harga"/>
@@ -19,6 +20,9 @@
         <field name="model">hmcoffee.penjualan</field>
         <field name="arch" type="xml">
             <form string="">
+                <header>
+                    <button string="Print" name="%(hmcoffee.report_penjualan_pdf)d" type="action" icon="fa-print" class="btn btn-success"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="name"/>
