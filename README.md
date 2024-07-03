@@ -15,14 +15,22 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
+<<<<<<< HEAD
 git remote add origin https://gitlab.com/hashmicro1/incubation-batch-1-jun-24/hmcoffee-dhiraludvia/hm-coffee.git
+=======
+git remote add origin https://gitlab.com/hashmicro1/incubation-batch-1-jun-24/custom-dhiraludvia/hmcoffee.git
+>>>>>>> f487dfe4a69eab4fd23ebb553fa7cdb645497f38
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
+<<<<<<< HEAD
 - [ ] [Set up project integrations](https://gitlab.com/hashmicro1/incubation-batch-1-jun-24/hmcoffee-dhiraludvia/hm-coffee/-/settings/integrations)
+=======
+- [ ] [Set up project integrations](https://gitlab.com/hashmicro1/incubation-batch-1-jun-24/custom-dhiraludvia/hmcoffee/-/settings/integrations)
+>>>>>>> f487dfe4a69eab4fd23ebb553fa7cdb645497f38
 
 ## Collaborate with your team
 
