@@ -17,4 +17,10 @@ class Pelanggan(models.Model):
         ('silver','Silver'),\
         ('gold','Gold'),
     ], string='Level')
+
+    is_member = fields.Boolean(string='Member')
+    
+    # is_customernya = fields.Boolean(string='Customer')
+
+
     

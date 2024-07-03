@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <odoo>
+    
     <!-- hmcoffee.pegawai tree view -->
-    <record id="hmcoffee_pegawai_view_tree" model="ir.ui.view">
-        <field name="name">Daftar Pegawai</field>
+    <record id="hmcoffee_pegawai_kasir_view_tree" model="ir.ui.view">
+        <field name="name">Daftar Pegawai Kasir</field>
         <field name="model">hmcoffee.pegawai</field>
         <field name="arch" type="xml">
             <tree>
@@ -17,8 +18,8 @@
     </record>
 
     <!-- hmcoffee.pegawai form view -->
-    <record id="hmcoffee_pegawai_view_form" model="ir.ui.view">
-        <field name="name">Form Pegawai</field>
+    <record id="hmcoffee_pegawai_kasir_view_form" model="ir.ui.view">
+        <field name="name">Form Pegawai Kasir</field>
         <field name="model">hmcoffee.pegawai</field>
         <field name="arch" type="xml">
             <form string="Identitas Diri">
@@ -41,19 +42,19 @@
     </record>
 
     <!-- hmcoffee.pegawai action window -->
-    <record id="hmcoffee_pegawai_action" model="ir.actions.act_window">
-        <field name="name">Pegawai</field>
+    <record id="hmcoffee_pegawai_kasir_action" model="ir.actions.act_window">
+        <field name="name">Kasir</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hmcoffee.pegawai</field>
         <field name="view_mode">tree,form</field>
-        <field name="domain"></field>
+        <field name="domain">[('jabatan','=','kasir')]</field>
     </record>
 
     <!-- This Menu Item must have a parent and an action -->
-    <menuitem id="hmcoffee_pegawai_menu_act" 
-        name="Pegawai" 
+    <menuitem id="hmcoffee_pegawai_kasir_menu_act" 
+        name="Kasir" 
         parent="pegawai_menu_categ" 
-        action="hmcoffee_pegawai_action" 
-        sequence="5"/>
+        action="hmcoffee_pegawai_kasir_action" 
+        sequence="10"/>
 
 </odoo>

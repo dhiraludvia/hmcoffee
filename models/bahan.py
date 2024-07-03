@@ -5,7 +5,7 @@ class Bahan(models.Model):
     _description = 'Bahan'
     _rec_name = 'nama_bahan'
 
-    nama_bahan = fields.Char(string='Nama Bahan')
+    nama_bahan = fields.Char(string='Nama Bahan', store=True)
     kategori_bahan_id = fields.Many2one(comodel_name='hmcoffee.kategoribahan',
                                         string='Kategori')
     stok = fields.Integer(string='Jumlah Stok')

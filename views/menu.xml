@@ -28,4 +28,9 @@
         name="Laporan" 
         parent="hmcoffee_menu_root" 
         sequence="25"/>
+
+    <menuitem id="pegawai_menu_categ" 
+        name="Pegawai" 
+        parent="hmcoffee_menu_root" 
+        sequence="50"/>
 </odoo>

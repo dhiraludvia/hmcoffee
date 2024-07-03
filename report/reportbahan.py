@@ -10,11 +10,15 @@ class ReportBahan(models.AbstractModel):
         row = 1
         col = 0
         sheet.write(row,col,'Nama Bahan')
-        sheet.write(row+1,col,'Kondisi Stok')
+        sheet.write(row+1,col,'Stok')
+        sheet.write(row+2,col,'Harga Modal')
+        sheet.write(row+3,col,'Total Modal')
         for obj in bahan:
             row = 1
             col += 1
             sheet.write(row,col,obj.nama_bahan)
-            sheet.write(row+1,col,obj.kondisi_stok)
+            sheet.write(row+1,col,obj.stok)
+            sheet.write(row+2,col,obj.harga_modal)
+            sheet.write(row+3,col,obj.total_modal)
 
     

@@ -19,7 +19,7 @@ class ReportPenjualanWz(models.TransientModel):
         laporan_jadi = self.env['hmcoffee.penjualan'].search_read(laporan)
 
         data = {
-            'form' : self.read(0),
+            'form' : self.read()[0],
             'laporannya' : laporan_jadi
         }
         report_action = self.env.ref('hmcoffee.report_penjualan_wizard_xlsx').report_action(self, data=data)
