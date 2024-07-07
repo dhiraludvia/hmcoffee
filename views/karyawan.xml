@@ -17,8 +17,6 @@
             </xpath>
             <xpath expr="//field[@name='name']" position="after">
                 <field name="tanggal_lahir"/>
-                <field name="usia"/>
-                <field name="status"/>
             </xpath>
         </field>
     </record>
@@ -37,8 +35,6 @@
             </xpath>
             <xpath expr="//field[@name='mobile_phone']" position="before">
                 <field name="tanggal_lahir"/>
-                <field name="usia"/>
-                <field name="status"/>
             </xpath>
         </field>
     </record>

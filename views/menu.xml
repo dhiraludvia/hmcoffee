@@ -13,6 +13,12 @@
         sequence="10"/>
 
     <!-- This Menu Item Must have a parent -->
+    <menuitem id="makanan_menu_categ" 
+        name="Makanan" 
+        parent="hmcoffee_menu_root" 
+        sequence="12"/>
+
+    <!-- This Menu Item Must have a parent -->
     <menuitem id="stok_menu_categ" 
         name="Stok Barang" 
         parent="hmcoffee_menu_root" 

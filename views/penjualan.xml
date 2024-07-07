@@ -10,7 +10,7 @@
                 <field name="ref"/>
                 <field name="member"/>
                 <field name="name" attrs="{'invisible':[('member','=',True)]}"/>
-                <field name="partner_id" attrs="{'invisible':[('member','!=',True)]}" domain="[('is_member','=',True),('level','=','silver')]"/>
+                <field name="partner_id" attrs="{'invisible':[('member','!=',True)]}" domain="[('is_member','=',True)]"/>
                 <field name="tanggal_transaksi"/>
                 <field name="total_harga"/>
                 <field name="state" widget="badge" 
@@ -44,14 +44,15 @@
                     <group>
                         <field name="member" attrs="{'readonly':[('member','!=',False)],'readonly':[('state','!=','draft')]}"/>
                         <field name="name" attrs="{'invisible':[('member','=',True)],'readonly':[('state','!=','draft')]}"/>
-                        <field name="partner_id" attrs="{'invisible':[('member','!=',True)],'readonly':[('state','!=','draft')]}" domain="[('is_member','=',True),('level','=','silver')]"/>
-                        <field name="tanggal_transaksi" attrs="{'readonly':[('member','!=',False)],'readonly':[('state','!=','draft')]}"/>
-                        <field name="total_harga" attrs="{'readonly':[('member','!=',False)],'readonly':[('state','!=','draft')]}"/>
+                        <field name="partner_id" attrs="{'invisible':[('member','!=',True)],'readonly':[('state','!=','draft')]}" domain="[('is_member','=',True)]"/>
+                        <field name="tanggal_transaksi" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="total_harga" readonly="1"/>
                     </group>
                     <group name='name' string='Detail Penjualan'>
                         <field name="detailpenjualan_ids" attrs="{'readonly':[('state','!=','draft')]}">
                             <tree editable="bottom">
-                                    <field name="bahan_id"/>
+                                    <!-- <field name="bahan_id"/> -->
+                                    <field name="makanan_id"/>
                                     <field name="harga_satuan"/>
                                     <field name="quantity"/>
                                     <field name="subtotal" sum='Total Beli'/>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- hmcoffee.makanan tree view -->
+    <record id="hmcoffee_makanan_view_tree" model="ir.ui.view">
+        <field name="name">Makanan</field>
+        <field name="model">hmcoffee.makanan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="harga"/>
+                <!-- <field name="detailmakanan_ids"/>                 -->
+            </tree>
+        </field>
+    </record>
+
+    <!-- hmcoffee.makanan form view -->
+    <record id="hmcoffee_makanan_view_form" model="ir.ui.view">
+        <field name="name">hmcoffee.makanan.view.form</field>
+        <field name="model">hmcoffee.makanan</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="harga"/>
+                        <field name="detailmakanan_ids"> 
+                            <tree editable="bottom">
+                                <field name="bahan_id"/>
+                                <field name="kebutuhan"/>
+                            </tree>
+                        </field>                       
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- hmcoffee.makanan action window -->
+    <record id="hmcoffee_makanan_action" model="ir.actions.act_window">
+        <field name="name">Makanan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hmcoffee.makanan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="hmcoffee_makanan_menu_act" 
+        name="Makanan" 
+        parent="makanan_menu_categ" 
+        action="hmcoffee_makanan_action" 
+        sequence="10"/>
+
+</odoo>

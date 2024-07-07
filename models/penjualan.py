@@ -15,7 +15,7 @@ class Penjualan(models.Model):
     detailpenjualan_ids = fields.One2many(comodel_name='hmcoffee.detailpenjualan', 
                                           inverse_name='penjualan_id', string='Detail Penjualan')
     
-    total_harga = fields.Integer(compute='_compute_total_harga', string='Total Harga Penjualan')
+    total_harga = fields.Integer(compute='_compute_total_harga', string='Total Harga Penjualan', readonly=True)
     
     state = fields.Selection([
         ('draft', 'draft'),
@@ -53,19 +53,19 @@ class Penjualan(models.Model):
                 bahannya.bahan_id.stok += bahannya.quantity
         rec = super(Penjualan,self).unlink()
 
-    def write(self, vals):
-        for rec in self:
-            a = self.env['hmcoffee.detailpenjualan'].search([('penjualan_id', '=', rec.id)])
-            for data in a:
-                if data:
-                    data.bahan_id.stok -= data.quantity
-        record = super(Penjualan, self).write(vals)
-        for recc in self:
-            b = self.env['hmcoffee.detailpenjualan'].search([('penjualan_id', '=', recc.id)])
-            for databaru in b:
-                if databaru in a:
-                    databaru.bahan_id.stok += databaru.quantity
-        return record
+    # def write(self, vals):
+    #     for rec in self:
+    #         a = self.env['hmcoffee.detailpenjualan'].search([('penjualan_id', '=', rec.id)])
+    #         for data in a:
+    #             if data:
+    #                 data.bahan_id.stok -= data.quantity
+    #     record = super(Penjualan, self).write(vals)
+    #     for recc in self:
+    #         b = self.env['hmcoffee.detailpenjualan'].search([('penjualan_id', '=', recc.id)])
+    #         for databaru in b:
+    #             if databaru in a:
+    #                 databaru.bahan_id.stok += databaru.quantity
+    #     return record
     
     @api.model
     def create(self, vals):
@@ -84,32 +84,49 @@ class DetailPenjualan(models.Model):
     _description = 'Detail Penjualan'
 
     penjualan_id = fields.Many2one(comodel_name='hmcoffee.penjualan', string='Penjualan')
-    bahan_id = fields.Many2one(comodel_name='hmcoffee.bahan', string='Barang')
-    harga_satuan = fields.Integer(compute='_compute_harga_satuan', string='Harga Satuan')
+    # bahan_id = fields.Many2one(comodel_name='hmcoffee.bahan', string='Barang')
+    makanan_id = fields.Many2one(comodel_name='hmcoffee.makanan', string='Barang')
+    # harga_satuan = fields.Integer(compute='_compute_harga_satuan', string='Harga Satuan')
+    harga_satuan = fields.Integer(string='Harga Satuan', related='makanan_id.harga')
     quantity = fields.Integer(string='Quantity')
     subtotal = fields.Integer(compute='_compute_subtotal', string='Subtotal')
     
-    @api.depends('bahan_id')
-    def _compute_harga_satuan(self):
-        for rec in self:
-            rec.harga_satuan = rec.bahan_id.harga_modal
+    # @api.depends('bahan_id')
+    # def _compute_harga_satuan(self):
+    #     for rec in self:
+    #         rec.harga_satuan = rec.bahan_id.harga_modal
+
+    # @api.depends('makanan_id')
+    # def _compute_harga_satuan(self):
+    #     for rec in self:
+    #         rec.harga_satuan = rec.makanan_id.harga
     
     @api.depends('harga_satuan','quantity')
     def _compute_subtotal(self):
         for rec in self:
             rec.subtotal = rec.harga_satuan*rec.quantity  
     
-    @api.constrains('quantity')
-    def _checkQuantity(self):
-        for rec in self:
-            if rec.quantity < 1:
-                raise ValidationError('Tidak bisa membeli {} {} pcs'. format(rec.bahan_id.nama_bahan, rec.quantity))
-            elif(rec.quantity > rec.bahan_id.stok):
-                raise ValidationError('Stok {} tidak mencukupi, maksimal pembelian {} pcs'. format(rec.bahan_id.nama_bahan, rec.bahan_id.stok))
+    # @api.constrains('quantity')
+    # def _checkQuantity(self):
+    #     for rec in self:
+    #         if rec.quantity < 1:
+    #             raise ValidationError('Tidak bisa membeli {} {} pcs'. format(rec.bahan_id.nama_bahan, rec.quantity))
+    #         elif(rec.quantity > rec.bahan_id.stok):
+    #             raise ValidationError('Stok {} tidak mencukupi, maksimal pembelian {} pcs'. format(rec.bahan_id.nama_bahan, rec.bahan_id.stok))
+
+    # @api.model
+    # def create(self, vals):
+    #     record = super(DetailPenjualan, self).create(vals)
+    #     if record.quantity:
+    #         self.env['hmcoffee.bahan'].search([('id', '=', record.bahan_id.id)]).write({'stok': record.bahan_id.stok - record.quantity})
+    #     return record
 
     @api.model
     def create(self, vals):
         record = super(DetailPenjualan, self).create(vals)
-        if record.quantity:
-            self.env['hmcoffee.bahan'].search([('id', '=', record.bahan_id.id)]).write({'stok': record.bahan_id.stok - record.quantity})
+        details = self.env['hmcoffee.makanan'].search([('id','=',record.makanan_id.id)]).mapped('detailmakanan_ids')
+        for detail in details:
+            # print(detail.bahan_id.nama_bahan)
+            # print(detail.kebutuhan)
+            self.env['hmcoffee.bahan'].search([('id','=',detail.bahan_id.id)]).write({'stok':detail.bahan_id.stok - (detail.kebutuhan * record.quantity)})
         return record

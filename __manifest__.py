@@ -48,6 +48,7 @@
         'views/pembelian.xml',
         'views/penjualan.xml',
         'views/karyawan.xml',
+        'views/makanan.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

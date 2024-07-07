@@ -2,6 +2,8 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_hmcoffee_pegawai,access.hmcoffee.pegawai,model_hmcoffee_pegawai,,1,1,1,1
 access_hmcoffee_kategoribahan,access.hmcoffee.kategoribahan,model_hmcoffee_kategoribahan,,1,1,1,1
 access_hmcoffee_bahan,access.hmcoffee.bahan,model_hmcoffee_bahan,,1,1,1,1
+access_hmcoffee_makanan,access.hmcoffee.makanan,model_hmcoffee_makanan,,1,1,1,1
+access_hmcoffee_detailmakanan,access.hmcoffee.detailmakanan,model_hmcoffee_detailmakanan,,1,1,1,1
 access_hmcoffee_manusia,access.hmcoffee.manusia,model_hmcoffee_manusia,,1,1,1,1
 access_hmcoffee_supplier,access.hmcoffee.supplier,model_hmcoffee_supplier,,1,1,1,1
 access_hmcoffee_pembelian,access.hmcoffee.pembelian,model_hmcoffee_pembelian,,1,1,1,1
